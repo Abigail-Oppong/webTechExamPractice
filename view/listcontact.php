@@ -24,6 +24,7 @@ session_start();
 
     <script type="text/javascript" src="../js/ajaxCalls.js"></script>
     <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/validate.js"></script>
 
 </head>
 <body>
@@ -104,6 +105,22 @@ if ($displaylist) {
 
 	</div>
 <?php endif ?>
+
+
+<?php if (isset($_SESSION['update_response'])): ?>
+
+      <div class="alert alert-success">
+        <?php
+        echo $_SESSION['update_response'];
+        unset($_SESSION['update_response']);
+         ?>
+
+      </div>
+
+    <?php endif ?>
+
+
+
 
 </div>
 

@@ -54,21 +54,21 @@ foreach ($user as $value) {
           <div class="form-row">
             <div class="col-md-4 mb-3">
               <label for="validationDefault01">Name</label>
-              <input type="text" name="uname" class="form-control" id="validationDefault01" placeholder="First name" value="<?php echo $pname; ?>" required>
+              <input type="text" name="uname" class="form-control" id="name" placeholder="First name" value="<?php echo $pname; ?>" required onkeyup="validateName()">
             </div>
             <div class="col-md-4 mb-3">
               <label for="validationDefault02">Email</label>
-              <input type="Email" class="form-control" id="validationDefault02" placeholder="new Email" name="uemail" value="<?php echo $email; ?>" required>
+              <input type="Email" class="form-control" id="email" placeholder="new Email" name="uemail" value="<?php echo $email; ?>" required onkeyup="validateEmail()">
             </div>
           </div>
           <div class="form-row">
             <div class="col-md-6 mb-3">
               <label for="validationDefault03">Phone</label>
-              <input type="tel" name="uphone" class="form-control" id="validationDefault03" placeholder=" new Phone Number" maxlength="10" value="<?php echo $pcontact; ?>" required>
+              <input type="tel" name="uphone" class="form-control" id="contact" placeholder=" new Phone Number" maxlength="10" value="<?php echo $pcontact; ?>" required onkeyup="validateContact()">
             </div>
             <div class="col-md-3 mb-3">
               <label for="validationDefault04">Date of Birth</label>
-              <input type="Date" name="udob" class="form-control" id="validationDefault04" placeholder="Date of Birth" value="<?php echo $pdob ?>" required>
+              <input type="Date" name="udob" class="form-control" id="dob" placeholder="Date of Birth" value="<?php echo $pdob ?>" required>
             </div>
           </div>
           <button class="btn btn-outline-success " name="uadd" type="submit">Update Contact</button>
@@ -98,11 +98,13 @@ if (isset($_GET['uadd'])){
     $updatecontact =  update_contact_ctrl($_SESSION['id'],$pname, $pemail, $pphone, $pdob);
     //echo result
     if ($updatecontact) {
-        $_SESSION['response']= "contact updated successfully";
-        $_SESSION['res_type'] = 'success';
+      header('Location: listcontact.php');
+        $_SESSION['update_response']= "contact updated successfully";
+
     }else{
+      header('Location: listcontact.php');
         $_SESSION['response']= "Failed to update contact";
-        $_SESSION['res_type'] = 'danger';
+
     }
 }
 
@@ -110,19 +112,7 @@ if (isset($_GET['uadd'])){
 
 
      ?>
-
-         <?php if (isset($_SESSION['response'])): ?>
-
-      <div class="alert alert-<?php echo $_SESSION['res_type'];?>">
-        <?php
-        echo $_SESSION['response'];
-        unset($_SESSION['response']);
-         ?>
-
-      </div>
-
-    <?php endif ?>
-
+<script type="text/javascript" src="../js/validate.js"></script>
 </body>
 </html>
 
