@@ -5,5 +5,3 @@ window.setTimeout(function() {
 }, 2000);
 
 
-
-
