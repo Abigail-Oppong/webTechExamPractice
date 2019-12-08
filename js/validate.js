@@ -29,3 +29,32 @@ function validateContact(){
         return false;
     }
 }
+
+/*
+
+$(document).ready(function(){
+    $('#addcontact').on('submit',function(e){
+            e.preventDefault();
+             var contact = validateContact();
+            var email = validateEmail();
+            var name = validateName();
+
+    if (contact && email && name) {
+        var udob = $('#dob').val();
+        var uname = $('#name').val();
+        var uemail = $('#email').val();
+        var uphone = $('#contact').val();
+
+        $.ajax({
+            type:'GET',
+            url:'../view/addcontactproc.php/',
+            data: 'uemail='+uemail+'&udob='+udob+'&uphone='+uphone+'&uname='+uname,
+            success: function(){
+                return true;
+            }
+        });
+    }
+
+    });
+});
+*/
