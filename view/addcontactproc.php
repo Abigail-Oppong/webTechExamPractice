@@ -1,4 +1,5 @@
 <?php
+session_start();
 //include the controller
 require('../controllers/personcontroller.php');
 
@@ -14,9 +15,14 @@ if (isset($_GET['uadd'])) {
 	$ret =  addcontactctrl($pname, $pemail, $pphone, $pdob);
 	//echo result
 	if ($ret) {
-		echo "New contact Inserted";
+		 header('Location: addcontact.php');
+    	$_SESSION['response'] = 'New contact Inserted!';
+
+
 	}else{
-		echo "Insert failed";
+		 header('Location: addcontact.php');
+    	$_SESSION['response'] = 'Error Inserting record!';
+
 	}
 }
 

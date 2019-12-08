@@ -19,7 +19,7 @@ class db_connection
 	*Database connection
 	*@return bolean
 	**/
-	function db_connect(){
+	public function db_connect(){
 		//connection
 		$this->db = mysqli_connect(SERVER,USERNAME,PASSWD,DATABASE);
 		//test the connection
@@ -36,22 +36,22 @@ class db_connection
 	*@param takes a connection and sql query
 	*@return bolean
 	**/
-	function db_query($sqlQuery){
+	public function db_query($sqlQuery){
 		if (!$this->db_connect()) {
 			return false;
-		} 
+		}
 		elseif ($this->db==null) {
 			return false;
 		}
 
-		//run query 
+		//run query
 		$this->results = mysqli_query($this->db,$sqlQuery);
 		if ($this->results == false) {
 			return false;
 		}else{
 			return true;
 		}
-		
+
 	}
 
 	//fetch data
@@ -72,7 +72,5 @@ class db_connection
 
 	}
 }
-//fetch last ID
-//row count
-//query error
+
 ?>
