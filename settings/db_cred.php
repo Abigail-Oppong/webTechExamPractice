@@ -1,6 +1,6 @@
 <?php
 //Database credentials
-define("DATABASE", "webtechexam");
+define("DATABASE", "webtechexams");
 define("SERVER", "localhost");
 define("USERNAME", "root");
 define("PASSWD", "");
